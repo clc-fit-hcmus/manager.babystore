@@ -1,0 +1,89 @@
+<!--**********************************
+    Content body start
+***********************************-->
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Hi, welcome back!</h4>
+                    <p class="mb-0">Your business dashboard template</p>
+                </div>
+            </div>
+            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Components</a></li>
+                </ol>
+            </div>
+        </div>
+        <!-- row -->
+        <div class="row">
+            <div class="col-xl-12 col-xxl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Nhập hàng</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/add-fd" method="post" enctype="multipart/form-data">
+                            <div>
+                                <section>
+                                    <div class="row">
+                                        <div class="col-lg-6 mb-2">
+                                            <div class="form-group">
+                                                <label class="text-label" for="productName">Tên hàng*</label>
+                                                <input id="productName" type="text" name="name" class="form-control" placeholder="Product name..." required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-label" for="productPrice">Giá nhập*</label>
+                                                <input id="productPrice" type="number" name="price" class="form-control" step="0.01" placeholder="Price..." required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-label" for="productType">Loại hàng*</label>
+                                                <select id="productType" class="form-control" id="sel1">
+                                                    <option selected disabled hidden>Chọn loại hàng..</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 mb-2">
+                                            <div class="form-group">
+                                                <label class="text-label" for="productPrice">Số lượng nhập*</label>
+                                                <input id="productPrice" type="number" name="price" class="form-control" placeholder="Price..." required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-label" for="productDiscount">Giá giảm*</label>
+                                                <input id="productDiscount" type="number" name="discount" value="0" class="form-control" step="0.01" placeholder="Discount..." required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-label" for="productType">Nhà cung cấp*</label>
+                                                <select id="productType" class="form-control" id="sel1">
+                                                    <option selected disabled hidden>Chọn nhà cung cấp..</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col md-4">
+                                            <div class="form-group">
+                                                <button style="margin: 12px 0;" type="submit" class="btn btn-primary-2 btn-lg float-right"><i class="fa fa-cart-plus mr-2"></i>Nhập</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--**********************************
+    Content body end
+***********************************-->
