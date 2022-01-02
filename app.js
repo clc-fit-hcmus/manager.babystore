@@ -4,12 +4,20 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const expressHbs =  require('express-handlebars');
+const moment = require('moment');
+const session = require('express-session');
+const passport = require('passport');
+const flash = require('connect-flash');
+const validator = require('express-validator');
 
 const indexRouter = require('./routes');
 const usersRouter = require('./routes/users');
 const reposRouter = require('./components/repository');
+const statisticRouter = require('./components/statistic');
 
 const app = express();
+
+require('./config/passport');
 
 const hbs = expressHbs.create({
   defaultLayout: 'layout', 
@@ -129,16 +137,36 @@ app.set('view engine', '.hbs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(validator());
 app.use(cookieParser());
+app.use(session({ 
+  secret: 'manager.babystore', 
+  resave: false, 
+  saveUninitialized: false
+}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function(req, res, next) {
+  res.locals.login = req.isAuthenticated();
+  res.locals.session = req.session;
+  next();
+})
+
 app.use('/', indexRouter);
-app.use('/inventory', indexRouter);
+app.use('/logout', indexRouter);
+app.use('/profile', indexRouter);
 app.use('/users', usersRouter);
 
 app.use('/', reposRouter);
 app.use('/product-list', reposRouter);
 app.use('/import', reposRouter);
+app.use('/inventory', reposRouter);
+
+app.use('/', statisticRouter);
+app.use('/statistic', statisticRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

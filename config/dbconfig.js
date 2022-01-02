@@ -6,7 +6,9 @@ const config = {
     options: {
         trustedconnection: true,
         enableArithAbort: true,
-        instancename: ''
+        instancename: '',
+        requestTimeout: 130000,
+        idleTimeoutMillis: 130000
     },
     port: 56310,
     trustServerCertificate: true

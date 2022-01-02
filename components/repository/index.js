@@ -1,11 +1,17 @@
 const express = require('express');
+const { getProducts } = require('./reposController');
+const { isLoggedIn, notLoggedIn } = require('../../utils/login');
+
 const router = express.Router();
-const { getProducts } = require('./reposController')
 
-router.get('/product-list', getProducts);
+router.get('/product-list', isLoggedIn, getProducts);
 
-router.get('/import', function(req, res, next) {
+router.get('/import', isLoggedIn, function(req, res, next) {
     res.render('repository/import');
+});
+
+router.get('/inventory', isLoggedIn, function(req, res, next) {
+  res.render('repository/inventory');
 });
 
 module.exports = router;

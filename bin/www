@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
-const config = require('../dbconfig');
+const config = require('../config/dbconfig');
 const sql = require('mssql');
-const console = require('console');
 
 sql.connect(config).then(() => {
   console.log("Connection to DB established");

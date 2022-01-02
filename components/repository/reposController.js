@@ -7,7 +7,10 @@ const getProducts = async (req, res) => {
             const maxPage = Math.ceil(count[0]['count'] / perPage);
             const page = ((t = (req.query.page || 1)) <= maxPage) && (t > 0) ? t : 1;
 
-            queryRange('XEM_HANG_TON_KHO', (perPage * page) - perPage + 1, perPage * page).then((products) => {
+            const from = (perPage * page) - perPage + 1;
+            const to = perPage * page;
+
+            queryRange('XEM_HANG_TON_KHO', from, to > count[0]['count'] ? count[0]['count'] : to).then((products) => {
                 res.render('repository/product-list', { 
                     products,
                     current: page,
